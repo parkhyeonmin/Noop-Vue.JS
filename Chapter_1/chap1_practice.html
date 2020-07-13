@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./index.css">
+    <title>DOCUMENT</title>
+</head>
+
+<body>
+    <h2>카운트 계산기</h2>
+    <div id="app">
+        <p>{{count}}회</p>
+        <button v-on:click="countUp">플러스</button>
+        <button v-on:click="countDown">마이너스</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                count: 0
+            }, 
+            methods: {
+                countUp: function(){
+                    this.count++;
+                },
+                countDown: function(){
+                    this.count--;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
