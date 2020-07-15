@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter3 bindtest2</title>
+</head>
+<body>
+    <div id="bindtest2">
+        <a href="https://github.com/parkhyeonmin/Noop-Vue.JS">링크를 직접지정</a>
+        <a v-bind:href="myURL">링크를 v-bind로 지정</a>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#bindtest2',
+            data:{
+                myURL:'https://github.com/parkhyeonmin/Noop-Vue.JS'
+            }
+        })
+    </script>
+</body>
+</html>
