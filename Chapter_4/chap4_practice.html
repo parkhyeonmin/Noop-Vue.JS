@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter4 practice</title>
+</head>
+<body>
+    <div id="chap4Prac">
+        <input v-model.lazy="myName">
+        <p>좋아하는 색은 :</p>
+        <label>
+            <input v-model="myColor" value="red" type="radio" >빨강<br>
+            <input v-model="myColor" value="green" type="radio">녹색<br>
+            <input v-model="myColor" value="blue" type="radio">파랑색<br>
+            <input v-model="myColor" value="yellow" type="radio">노란색<br>
+            <input v-model="myColor" value="gray" type="radio">회색
+        </label>
+        <p>내 이름은 {{myName}} 이고 좋아하는 색은 {{myColor}} 입니다. </p>
+
+    </div>
+
+    <script>
+        new Vue({
+            el:'#chap4Prac',
+            data:{
+                myName:'',
+                myColor:'',
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

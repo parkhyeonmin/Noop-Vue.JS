@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter4 modeltest12</title>
+</head>
+<body>
+    <div id="modeltest12">
+        <input v-model.trim="myText">
+        <p>앞 뒤 공백을 제거 "{{myText}}" </p>
+        <input v-model="myText1"><p>공백이 들어갑니다. "{{myText1}}" </p>
+    </div>
+    <script>
+        new Vue({
+            el:'#modeltest12',
+            data:{
+                myText:'',
+                myText1:''
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <link rel="stylesheet" href="../Chapter_1/style.css">
+    <title>Chapter4 modeltest3</title>
+</head>
+<body>
+    <div id="modeltest3">
+        <label><input type="checkbox" v-model="myCheck">
+            체크박스의 상태는 {{myCheck}}
+        </label>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#modeltest3',
+            data:{
+                myCheck:false
+            }
+        })
+    </script>
+</body>
+</html>

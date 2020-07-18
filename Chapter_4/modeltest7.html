@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter4 modeltest7</title>
+</head>
+<body>
+    <div id="modeltest7">
+        <label>
+            <input type="radio" value="face1.png" v-model="fileName">face1
+        </label><br>
+        <label>
+            <input type="radio" value="face2.png" v-model="fileName">face2
+        </label><br>
+        <p>{{fileName}} 선택 </p>
+        <img v-bind:src="fileName"/>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#modeltest7',
+            data:{
+                fileName:''
+            }
+        })
+    </script>
+</body>
+</html>
