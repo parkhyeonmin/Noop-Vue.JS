@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter5 practice</title>
+</head>
+<body>
+    <div id="chap5Prac">
+        <input type="text" v-model="X">  <input type="text" v-model="Y">
+        <br><br>
+        <button v-on:click="plus(X,Y)">덧셈계산</button>
+        <button v-on:click="minus(X,Y)">뺄셈계산</button>
+        <button v-on:click="multiply(X,Y)">곱셈계산</button>
+        <button v-on:click="division(X,Y)">나눗셈계산</button>
+        <p>결과는 {{returnNum}}입니다. </p>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#chap5Prac',
+            data:{
+                X:0,
+                Y:0,
+                returnNum:0
+            },
+            methods:{
+                plus:function(X,Y){
+                    this.returnNum=X-(-Y);
+                },
+                minus:function(X,Y){
+                    this.returnNum=X-Y;
+                },
+                multiply:function(X,Y){
+                    this.returnNum=X*Y;
+                },
+                division:function(X,Y){
+                    this.returnNum=X/Y;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

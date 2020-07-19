@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter5 ontest3</title>
+</head>
+<body>
+    <div id="ontest3">
+        <p>{{count}} </p>
+        <button v-on:click="countUp(3)">3씩 증가</button>
+        <button v-on:click="countUp(10)">10씩 증가</button>
+        <button v-on:click="countUp(100)">100씩 증가</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#ontest3',
+            data:{
+                count:0
+            },
+            methods:{
+                countUp:function(value){
+                    this.count+=value;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

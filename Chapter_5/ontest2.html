@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter5 ontest2</title>
+</head>
+<body>
+    <div id="ontest2">
+        <button v-on:click="oneClick" value="good" v-bind:disabled="isClick">좋아~</button>
+    </div>
+    <script>
+        function good(){
+            alert("좋아~");
+        }
+        new Vue({
+            el:'#ontest2',
+            data:{
+                isClick:false
+            },
+            methods:{
+                oneClick:function(){
+                    this.isClick=true;
+                    good();
+                }
+            }
+        })
+    </script>
+</body>
+</html>
