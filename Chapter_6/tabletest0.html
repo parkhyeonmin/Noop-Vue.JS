@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <!--예제9번 css 링크-->
+    <link rel="stylesheet" href="./tabletest.css">
+    
+    <title>Chapter6 tabletest0</title>
+</head>
+<body>
+    <div id="tabletest0">
+        <h3>관심 받고 있는 언어 랭킹</h3>
+        <table>
+            <thead>
+                <!--테이블 헤더 반복-->
+                <th v-for="item in header">{{item}}</th>
+            </thead>
+            <tbody>
+                <!--1행 반복-->
+                <tr v-for="line in ranking">{{item}} 
+                    <!--1데이터 반복-->
+                    <td v-for="item in line">{{item}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        new Vue({
+            el:'#tabletest0',
+            data:{
+                header:[
+                    '프로그램언어',2018,2013,2000,2003,1998
+                ],
+                ranking:[
+                    ['Java',1,2,1,1,16],
+                    ['C',2,1,2,2,1],
+                    ['C++',3,4,3,3,2],
+                    ['Python',4,7,6,11,23],
+                    ['JavaScript',7,10,8,7,20]
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
