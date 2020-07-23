@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter4 modeltest11</title>
+</head>
+<body>
+    <div id="modeltest11">
+        <input v-model.number="myNumber" type="number">
+        <p>100을 더해서 표시 "{{myNumber+100}}"</p>
+    </div>
+    <script>
+        new Vue({
+            el:'#modeltest11',
+            data:{
+                myNumber:0
+            }
+        })
+    </script>
+</body>
+</html>
