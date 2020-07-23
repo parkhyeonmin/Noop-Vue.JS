@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Chapter7 GoogleChartsVue</title>
+</head>
+<body>
+    <h2>Google Charts의 원그래프에 버튼으로 투표 할 수 있는 예제</h2>
+    <h3>선호하는 점심 메뉴 투표</h3>
+    <div class="charts" id="chart_div" 
+    style="width:1200px;
+           height:400px;
+           padding-left:200px;
+           padding-bottom: 20px;
+           padding-top:30px;">
+    </div>
+    <div id="googleChartVue">
+        <li v-for="(item,c) in dataArray" v-if="c>0" class="menu">
+           <p>
+               {{item[0]}} : {{item[1]}}
+           </p> 
+            <div class="button">
+                <button v-on:click="addOne(c)">한표</button>
+                <button v-on:click="subOne(c)">한표 빼기</button>
+            </div>
+        </li>
+    </div>
+    <script>
+        //그래프에 사용할 데이터
+         var orgdata=[
+            [' ','개수'],
+            ['도시락',3],
+            ['갈비탕',4],
+            ['오므라이스',5],
+            ['짬뽕',1],
+            ['비빔밥',3],
+            ['메밀소바',1]
+        ];
+        google.charts.load('current',{packages: ['corechart','bar']});
+        google.charts.setOnLoadCallback(drawBasic);
+        //그래프를 그리는 함수
+        function drawBasic(){
+            var data = google.visualization.arrayToDataTable(orgdata);
+            var options={title:'선호하는 점심',"is3D":true, bars:'horizontal'};
+            var chart = new google.charts.Bar(document.getElementById('chart_div'));
+            chart.draw(data,options);
+        }
+
+        new Vue({
+            el: '#googleChartVue',
+            data:{
+                dataArray:orgdata,
+            },
+            methods:{
+                addOne: function(val){
+                    var obj = this.dataArray[val];
+                    obj[1]++;
+                    this.dataArray.splice(val,1,obj);
+                    drawBasic();
+                },
+                subOne: function(val){
+                    var obj= this.dataArray[val];
+                    obj[1]--;
+                    this.dataArray.splice(val,1,obj);
+                    drawBasic();
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>
