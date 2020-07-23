@@ -9,22 +9,10 @@
 <body>
     <div id="ontest3">
         <p>{{count}} </p>
-        <button v-on:click="countUp(3)">3씩 증가</button>
-        <button v-on:click="countUp(10)">10씩 증가</button>
-        <button v-on:click="countUp(100)">100씩 증가</button>
+        <button v=onclick="countUp(3)">3증가</button>
     </div>
     <script>
-        new Vue({
-            el:'#ontest3',
-            data:{
-                count:0
-            },
-            methods:{
-                countUp:function(value){
-                    this.count+=value;
-                }
-            }
-        })
+
     </script>
 </body>
 </html>
