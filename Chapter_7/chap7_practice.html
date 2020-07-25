@@ -30,6 +30,7 @@
         </li>
     </div>
     <script>
+
         //그래프에 사용할 데이터
          var orgdata=[
             [' ','개수'],
@@ -40,8 +41,10 @@
             ['비빔밥',3],
             ['메밀소바',1]
         ];
+        
         google.charts.load('current',{packages: ['corechart','bar']});
         google.charts.setOnLoadCallback(drawBasic);
+
         //그래프를 그리는 함수
         function drawBasic(){
             var data = google.visualization.arrayToDataTable(orgdata);

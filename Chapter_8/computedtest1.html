@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter8 computedtest1</title>
+</head>
+<body>
+    <div id="computedtest1">
+        <input type="number" v-model.number="price">원
+        <p>소비세 포함 금액 {{taxIncluded}} </p>
+    </div>
+    
+    <script>
+        new Vue({
+            el:'#computedtest1',
+            data:{
+                price:100
+            },
+            computed:{
+                taxIncluded : function() {
+                    return this.price *1.08;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

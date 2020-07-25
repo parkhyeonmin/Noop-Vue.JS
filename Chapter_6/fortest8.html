@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter6 fortest8</title>
+</head>
+<body>
+    <div id="fortest8">
+        <ul>
+            <li v-for="item in myArray">{{item}} </li>
+        </ul>
+        <button v-on:click="evenData()">짝수만 표시</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#fortest8',
+            data:{
+                myArray:[1,2,3,4,6,7,8,9,10]
+            },
+            methods:{
+                evenData:function(){
+                this.myArray= this.myArray.filter(
+                    function(value) {return value%2==0;}
+                );
+            }
+            }
+        })
+    </script>
+</body>
+</html>
