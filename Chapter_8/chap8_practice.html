@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter8 practice</title>
+</head>
+<body>
+    <div id="chap8prac">
+        <h1>제한 시간내에 문자 입력하기</h1>
+        <p>금지문자(,로 나누어 복수입력가능)
+            <input type="text" v-model="forbiddenText">
+        </p>
+        <p>제한시간을 입력하세요 (초)
+            <input type="number" v-model="restSec">
+            <button v-on:click="setTime">시 작</button>
+        </p>
+        <p>남은시간 {{limitTime}} 초</p>
+        <textarea :disabled="doneTimer" v-model="inputText" style="min-width: 500px;min-height: 200px;"></textarea>
+        <p v-if="limit">{{textCnt}} 개의 문자를 입력하였습니다.</p>
+        <p v-if="limit">벌점: {{forbiddenCnt*12}} (금지문자 1개당 12점)</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#chap8prac',
+            data: {
+                forbiddenText:"바보,멍청이",
+                restSec:0,
+                forbiddenCnt:0,
+                doneTimer:true,
+                limitTime:0,
+                limit:false
+            },
+            methods: {
+                setTime:function(){
+                    this.doneTimer=false;
+                    this.limitTime=this.restSec;
+                    this.timerObj = setInterval(()=>{this.limitTime--},1000);
+                    this.limit=false;
+                }
+            },
+            computed:{
+                
+            },
+            watch: {
+                limitTime:function(){
+                    if(this.limitTime <=0){
+                        clearInterval(this.timerObj);
+                        this.doneTimer=true;
+                        this.limit=true;
+                        textCnt();  
+                    }
+                },
+                inputText:function(){
+                    //금지문자열을 ,로 구분해 찾은 갯수값 만큼 반복해준다.
+                   var splitForbidden = this.forbiddenText.split(",");
+
+                   for(var i=0; i<splitForbidden.length; i++){
+                       var pos = this.inputText.indexOf(splitForbidden[i]);
+
+                       if(pos >= 0){
+                           alert('금지 단어를 입력하였습니다. 10초 추가');
+                           this.inputText = this.inputText.substr(0,pos);
+                           this.limitTime = this.limitTime + 10;
+                           this.forbiddenCnt++;
+                       }
+                   }
+                },
+                textCnt:function(){
+                    return this.inputText.length();
+                },
+
+            }
+        })
+    </script>
+</body>
+</html>
