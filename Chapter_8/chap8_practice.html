@@ -25,6 +25,7 @@
             el: '#chap8prac',
             data: {
                 forbiddenText:"바보,멍청이",
+                inputText:'',
                 restSec:0,
                 forbiddenCnt:0,
                 doneTimer:true,
@@ -40,7 +41,9 @@
                 }
             },
             computed:{
-                
+                textCnt:function(){
+                    return this.inputText.length;
+                }
             },
             watch: {
                 limitTime:function(){
@@ -65,11 +68,7 @@
                            this.forbiddenCnt++;
                        }
                    }
-                },
-                textCnt:function(){
-                    return this.inputText.length();
-                },
-
+                }
             }
         })
     </script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter8 watchTest2</title>
+</head>
+<body>
+    <div id="watchtest2">
+        <p>앞으로 {{restSec}}초 </p>
+        <button v-on:click="startTimer">START</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#watchtest2',
+            data:{
+                restSec:5,
+                timerObj:null,
+            },
+            methods:{
+                startTimer:function(){
+                    this.restSec=5;
+                    this.timerObj = setInterval(()=>{this.restSec--},1000)
+                }
+            },
+            watch:{
+                restSec:function(){
+                    if(this.restSec<=0){
+                        alert("시간제한입니다.");
+                        clearInterval(this.timerObj);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

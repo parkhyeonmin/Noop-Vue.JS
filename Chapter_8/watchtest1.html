@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter8 watchtest1</title>
+</head>
+<body>
+    <div id="watchtest1">
+        <p>금지문자는 "{{forbiddenText}}" </p>
+        <textarea v-model="inputText"></textarea>
+    </div>
+    <script>
+        new Vue({
+            el:'#watchtest1',
+            data:{
+                forbiddenText:'안되',
+                inputText:'오늘 날씨는 비가오고있습니다.'
+            },
+            watch:{
+                inputText:function(){
+                    var pos = this.inputText.indexOf(this.forbiddenText);
+                    if(pos>=0){
+                        alert(this.forbiddenText+"는 입력할 수 없습니다.");
+                        this.inputText= this.inputText.substr(0,pos);
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter8 timerTest</title>
+</head>
+<body>
+   <h2>남은 시가닝 0초가 되면 얼럿을 띄우는 예제</h2>
+   <button onclick="startTimer()">START</button>
+    
+   <script>
+       function startTimer(){
+           this.restSec=5;
+           this.timerObj = setInterval(() =>{countDown()},1000)
+       }
+       function countDown(){
+           this.restSec --;
+            if(this.restSec <=0){
+                alert("제한 시간 입니다.");
+                clearInterval(this.timerObj);
+            }
+       }
+   </script>
+</body>
+</html>
