@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <style>
+        .v-enter-active, .v-leave-active{
+            transition: 0.5s;
+        }
+        .v-enter, .v-leave-to{
+            opacity: 0;
+            transform:translateX(50px)
+        }
+    </style>
+    <title>Chapter10 transtest2</title>
+</head>
+<body>
+    <h1>버튼을 누르면 리스트가 증감할 때 애니메이션 효과를 주는 예제</h1>
+    <div id="transtest2">
+        <transition-group>
+            <li v-for="item in dataArray" v-bind:key="item">{{item}}</li>
+        </transition-group>
+        <label><input v-model="addItem" placeholder="추가할 리스트">  </label>
+        <button v-on:click="addList">추가</button><p>
+        <button v-on:click="removeLast">맨뒤 1개 삭제 </button>
+    </div>
+    <script>
+        new Vue({
+            el:'#transtest2',
+            data:{
+                dataArray:['벚꽃','산수유','진달래','철죽'],
+                addItem:''
+            },
+            methods:{
+                addList:function(){
+                    //dataArray 배열 맨 뒤에 addItem을 푸시하여준다.
+                    this.dataArray.push(this.addItem);
+                    //데이터를 추가 후 addItem을 다시 공백상태로 만들어준다.
+                    this.addItem='';
+                },
+                removeLast:function(){
+                    //배열의 길이 - 1 = lastIdx
+                    var lastIdx = this.dataArray.length -1;
+                    // lastIdx 뒷 1공간을 지워준다.
+                    this.dataArray.splice(lastIdx,1);
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

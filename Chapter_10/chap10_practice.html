@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter10 pratice</title>
+</head>
+<!--
+    ###요구사항 
+     - 6장에서의 연습문제를 바탕으로 수정 하기
+     -변경시 +100 리스트에 중복값있을 때 +1 추가
+     - 삭제버튼시 오른쪽으로 페이드아웃 transitionX((x)px)
+     - 추가시 마지막숫자 +1 한 숫자르 맨아래 페이드인 효과로 추가
+     - 소트시 move에 2초 추가
+     - 구구단 보이기 페이드인 추가
+-->
+<body>
+    <div id="chap10prac">
+        <h1>애니메이션이 들어간 숫자 배열 조작과 구구단 출력</h1>
+        <ul>
+            <li v-for="(item,index) in myArray">
+                    {{item}}
+                <button class="btn__head" v-on:click="changeNum(index)">변경</button>
+                <button class="btn__head" v-on:click="deleteNum(index)">삭제</button>
+            </li>
+            <button class="btn__mid" v-on:click="addNum">추가</button>
+            <button class="btn__mid" v-on:click="sortNum(myArray)">소트</button>
+            <button class="btn__mid" v-on:click="showGugu">구구단 보이기</button>
+        </ul>
+        <ul v-if="checkgugu">
+            <li v-for="index in myArray">
+                <p v-for="number in 9">
+                    {{index}} x {{number}} = {{index*number}}
+                </p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:'#chap10prac',
+            data:{
+                myArray:[2,3,4,5,6,7,8,9],
+                checkgugu:false
+            },
+            methods:{
+                changeNum:function(index){
+                    this.myArray.splice(index,1,this.myArray[index]+1);
+                },
+                addNum:function(){
+                    var len = this.myArray.length;
+
+                    this.myArray.push(myArray[len]-(-1));
+                },
+                deleteNum:function(index){
+                    this.myArray.splice(index,1);
+                },
+                sortNum:function(list){
+                    list.sort(function(a,b){
+                        return (a<b ? -1:1);
+                    });
+                },
+                showGugu:function(){
+                    if(this.checkgugu==true)
+                    {
+                        this.checkgugu=false;
+                    }
+                    else this.checkgugu=true;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

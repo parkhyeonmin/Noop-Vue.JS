@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter10 shuffletest</title>
+</head>
+<body>
+    <!-- 클릭하면 셔플하는 예제 -->
+    <h2>클릭하면 셔플하는 예제</h2>
+    <button onclick="shuffleData()">셔플</button>
+    
+    <script>
+        var dataArray= ['one','tho','three','four','five'];
+        function shuffleData(){
+            //임시로 저장할 배열 공간 선언
+            var buffer = [];
+            //원본 배열의 길이를 len 변수에 저장
+            var len = this.dataArray.length;
+
+            for(var i =len; i>0;i--){
+                // r은 랜덤수를 뽑아 곱한 후 소수점 제거한 값
+                var r=Math.floor(Math.random()*len);
+                // 원본 배열에서 랜덤으로 하나씩 뽑아서 임시 배열에 추가
+                buffer.push(this.dataArray[r]);
+                //원본 배열에서 랜덤으로 하나식 삭제
+                this.dataArray.splice(r,1);
+            }
+            // 임시 배열을 원본배열에 덮어씌움
+            this.dataArray=buffer;
+            //내용확인
+            alert(dataArray);
+        }
+    </script>
+    
+</body>
+</html>
