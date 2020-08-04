@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Chapter11 todolist1</title>
+</head>
+<body>
+    <h2>ToDo리스트</h2>
+    <div id="todolist1">
+        <label>
+            <input type="checkbox" v-model="todo.done">
+            <span v-bind:class="{donestyle:todo.done}">{{todo.text}}</span>
+        </label>
+    </div>
+    <p>{{remaining}} / {{todos.length}}건 처리</p>
+    <style>
+        .donestyle{
+            text-decoration: line-through;
+            color:lightgray;
+        }
+    </style>
+    <script>
+        new Vue({
+            el:'#todolist1',
+            data:{
+                todos:[
+                    {done:false, text:'빵사기'},
+                    {done:false, text:'커피사기'}
+                ]
+            },
+            computed:{
+                remaining:function(){
+                    return this.todos.filter(function(val){
+                        return val.done;
+                    }).length;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

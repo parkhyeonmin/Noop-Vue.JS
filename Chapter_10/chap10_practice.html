@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <style>
+        .v-move{
+            transition:2s;
+        }
+        .v-enter-active, v-leave-active{
+            transition:1s;
+            transform: translateX(-50px);
+        }
+        .v-enter, v-leave-to{
+            opacity: 0;
+            transform:translateX(50px)
+        }
+    </style>
+
     <title>Chapter10 pratice</title>
 </head>
 <!--
@@ -11,7 +26,7 @@
      - 6장에서의 연습문제를 바탕으로 수정 하기
      -변경시 +100 리스트에 중복값있을 때 +1 추가
      - 삭제버튼시 오른쪽으로 페이드아웃 transitionX((x)px)
-     - 추가시 마지막숫자 +1 한 숫자르 맨아래 페이드인 효과로 추가
+     - add 추가시 마지막숫자 +1 한 숫자르 맨아래 페이드인 효과로 추가
      - 소트시 move에 2초 추가
      - 구구단 보이기 페이드인 추가
 -->
@@ -19,12 +34,14 @@
     <div id="chap10prac">
         <h1>애니메이션이 들어간 숫자 배열 조작과 구구단 출력</h1>
         <ul>
-            <li v-for="(item,index) in myArray">
+            <transition-group>
+                <li v-for="(item,index) in myArray" v-bind:key="item">
                     {{item}}
-                <button class="btn__head" v-on:click="changeNum(index)">변경</button>
-                <button class="btn__head" v-on:click="deleteNum(index)">삭제</button>
+                    <button class="btn__head" v-on:click="changeNum(index)">변경</button>
+                    <button class="btn__head" v-on:click="deleteNum(index)">삭제</button>
+                </transition-group>
             </li>
-            <button class="btn__mid" v-on:click="addNum">추가</button>
+                <button class="btn__mid" v-on:click="addNum">추가</button>
             <button class="btn__mid" v-on:click="sortNum(myArray)">소트</button>
             <button class="btn__mid" v-on:click="showGugu">구구단 보이기</button>
         </ul>
@@ -45,12 +62,26 @@
             },
             methods:{
                 changeNum:function(index){
-                    this.myArray.splice(index,1,this.myArray[index]+1);
+                    this.myArray.splice(index,1,this.myArray[index]+100);
+                    var boolCheck=false;
+                    while(boolCheck==false){
+                        for(i=0; i<this.myArray.length;i++){
+                            if(this.myArray[index]==this.myArray[i])
+                            {
+                                this.myArray[index]++;
+                            }
+                            else if(i+1==this.myArray.length && this.myArray[i]!=this.myArray[length]){
+                                boolCheck=true;
+                            }
+                        }
+                        
+                    }
+                    
                 },
                 addNum:function(){
                     var len = this.myArray.length;
-
-                    this.myArray.push(myArray[len]-(-1));
+                    // add 요구사항 배열의 끝 수+1
+                    this.myArray.push(1+this.myArray[len-1]);
                 },
                 deleteNum:function(index){
                     this.myArray.splice(index,1);

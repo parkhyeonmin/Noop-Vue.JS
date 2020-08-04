@@ -10,7 +10,7 @@
         }
         .v-enter, .v-leave-to{
             opacity: 0;
-            transform:translateX(50px)
+            transform:translateX(50px);
         }
     </style>
     <title>Chapter10 transtest2</title>
@@ -21,7 +21,9 @@
         <transition-group>
             <li v-for="item in dataArray" v-bind:key="item">{{item}}</li>
         </transition-group>
-        <label><input v-model="addItem" placeholder="추가할 리스트">  </label>
+        <label>
+            <input v-model.trim="addText" v-on:click="addToDo" placeholder="추가할 리스트">
+        </label>
         <button v-on:click="addList">추가</button><p>
         <button v-on:click="removeLast">맨뒤 1개 삭제 </button>
     </div>
@@ -30,7 +32,11 @@
             el:'#transtest2',
             data:{
                 dataArray:['벚꽃','산수유','진달래','철죽'],
-                addItem:''
+                addItem:'',
+                todos:[
+                    {done:false, text:'빵사기'},
+                    {done:false, test:'커피사기'}
+                ]
             },
             methods:{
                 addList:function(){

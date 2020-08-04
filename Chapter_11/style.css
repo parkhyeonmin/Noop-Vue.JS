@@ -1,0 +1,18 @@
+.todolist{
+    display:flex;   
+}
+.todolist__span{
+    min-width: 300px;
+}
+
+.ADD{
+    font-size: large;
+}
+button{
+    margin-left:5px;
+    padding-left: 5px;
+    min-height: 30px;
+    background-color: #7979ff;
+    border: 0px ;
+    border-radius: 4px;
+}
