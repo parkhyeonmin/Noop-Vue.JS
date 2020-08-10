@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Chapter12 comptest1</title>
+</head>
+<body>
+    <div id="comptest1">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    <script>
+        var Mycomponent={
+            template: '<p class="my-comp">Hello</p>'
+        }
+        new Vue({
+            el:'#comptest1',
+            components:{
+                'my-component':Mycomponent
+            }
+        })
+    </script>
+</body>
+</html>

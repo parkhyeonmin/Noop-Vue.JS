@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Chapter12 comptest3</title>
+</head>
+<body>
+    <div id="comptest3">
+        <my-component my-name="철수"></my-component>
+        <my-component my-name="영희"></my-component>
+        <my-component></my-component>
+    </div>
+    <script>
+        var MyComponent={
+            template: '<p class="my-comp">나는 {{myName}}입니다.</p>',
+            props:{
+                myName:String
+            },
+            created:function(){
+                if(this.myName==null){
+                    this.myName="이름없음";
+                }
+            }
+        }
+        new Vue({
+            el:'#comptest3',
+            components:{
+                'my-component':MyComponent
+            }
+        })
+    </script>
+</body>
+</html>
